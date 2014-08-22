@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+body {
+font-size:12px;
+font-family:Helvetica;
+}
+div.header {
+font-size:27px;
+text-align:center;
+}
+div.fleft {
+float: left; width:9px; height:100%;position: absolute; left:-15px; top:0px;margin-left:0;padding-left:0px;margin-top:27px;text-align:center;
+}
+div.tab1 {
+width:54px; float: left; -webkit-transform: rotate(270deg);-moz-transform: rotate(270deg);-ie-transform: rotate(270deg);-o-transform: rotate(270deg); display:inline-block; border-style: solid; border-width: 1px 1px 0px 1px; border-radius:10px 0px 0px 0px; padding: 3px; box-shadow: -3px -3px 1px #888888; position: absolute; top:-3px; left:-1px;
+}
+div.tab2 {
+width: 54px; float: left; -webkit-transform: rotate(270deg);-moz-transform: rotate(270deg);-ie-transform: rotate(270deg);-o-transform: rotate(270deg); display:inline-block; border-style: solid; border-width: 1px 1px 1px 1px; border-radius:10px 0px 0px 0px; padding: 3px; box-shadow: -3px -3px 1px #000000; position: absolute; top:61px; left:-3px;
+}
+div.tab3 {
+width:54px; float: left; -webkit-transform: rotate(270deg);-moz-transform: rotate(270deg);-ie-transform: rotate(270deg);-o-transform: rotate(270deg); display:inline-block; border-style: solid; border-width: 1px 1px 1px 1px; border-radius:10px 0px 0px 0px; padding: 3px; box-shadow: -3px -3px 1px #000; position: absolute; top:126px; left:-3px;
+}
+div.left {
+width:45%; height:1000px; position:absolute;left:23px;top:65px;margin-right:0;border-style:solid;border-width:0px 0px 0px 1px;padding: 0px ; margin:0px
+}
+div.ileft {
+width:45%;top:65px;position:absolute;margin-right:0;padding: 0px 0px 0px 3px;margin:0px
+}
+div.right {
+width:45%; float:right; height:900px; position:absolute;right:12px;top:65px
+}
+div.v {
+position:fixed;right:0px;bottom:0px;z-index:100;
+}
+.goodstat {
+color: green
+}
+.badstat {
+color:red
+}
+a {
+text-decoration: none; color:black;
+}
