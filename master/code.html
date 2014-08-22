@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html><head>
+<title>MPMon code</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div class='header'>
+<a class='mpmon' href='http://www.mpmon.com'><span style='color:red'>M</span><span style='color:green'>P</span><span style='color:blue'>M</span>on Code</a>
+</div>
+<div class='fleft'>
+  <div class='tab1'>
+    <a href='code.html'>Code</a>
+  </div>
+  <div class='tab2'>
+    <a href='index.cgi'>Overview</a>
+  </div>
+  <div class='tab3'>
+    <a href='problems.cgi'>Problems</a>
+  </div>
+</div>
+<div style="margin:10px;padding:18px">
+<b>MASTER</b><hr>
+<b>index.cgi</b>
+<pre>
+#!/usr/bin/perl
+#Props Kirk Brown http://perl.about.com/od/appliedprogramming/ss/servicemonitor_5.htm and Thomas Nooning http://www.techrepublic.com/article/solutionbase-set-up-customized-network-monitoring-with-perl
+use strict;
+use warnings;
+use IO::Socket;
+use CGI qw/:standard/;
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+use CGI::Pretty;
+use LWP::UserAgent;
+print header;
+print start_html(-title=>"MPMon", -style => {-src => '/css/main.css'}, -meta => {
+ 'keywords' => 'perl, massively, parallel, monitor',
+ 'description' => 'Matt\'s Perl Monitor'});
+print "&lt;a href='http://www.mpmon.com'>&lt;h1 style='text-align:center;font-size:21px'>Welcome to lt;span style='color:red'>M&lt;/span>&lt;span style='color:green'>P&lt;/span>&lt;span style='color:blue'>M&lt;/span>on&lt;/h1>&lt;/a>";
+print "&lt;div class='fleft'>";
+print   "&lt;div class='tab1'>";
+print   "Overview";
+print   "&lt;/div>";
+print   "&lt;div class='tab2'>";
+print   "Problems";
+print   "&lt;/div>";
+print   "&lt;div class='tab3'>";
+print   "Code";
+print   "&lt;/div>";
+print "&lt;/div>";
+print "&lt;div class='left'>";
+print   "&lt;iframe src='http://www.mpmon.com/overview.cgi' frameBorder='0' width='100%' height='900px'>&lt;/iframe>";
+print "&lt;/div>";
+print "&lt;div class='right'>";
+print   "&lt;iframe src='http://www.mairs.net/mpmon/overview.cgi' frameBorder='0' width='100%' height=900px>&lt;/iframe>";
+print "&lt;/div>";
+print end_html;
+exit;
+</pre>
+<b>overview.cgi</b><br />
+<textarea rows='54' cols='80'>
+#!/usr/bin/perl
+use strict;
+use warnings;
+use IO::Socket;
+use CGI qw/:standard/;
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+use LWP::UserAgent;
+use Time::HiRes qw(gettimeofday);
+print header;
+print start_html(-style=>{-code=>"body {font-size:12px;font-family:Helvetica}"});
+print "<h2 style='text-align:center'>East Coast US</h2>";
+my ($socket, $status);
+open (my $fh, "<", "SERVICEs");
+while (my $line = <$fh>){
+  my @list=split(', ',$line);
+  $socket =
+    IO::Socket::INET->new( PeerAddr	=> $list[1],
+    PeerPort	=> $list[2],
+    Proto	=> 'tcp',
+    Type	=>  SOCK_STREAM);
+  if ($socket){
+    $status .= $list[0]." port ".$list[2]." is ".=  "<b style='color:green'>LISTENING</b>";
+    close ($socket);
+  }else{
+    $status .= $list[0]." port ".$list[2]." is ".=  "<b style='color:red'>CLOSED</b>";
+  }
+  $status .= "<br />\n";
+}
+print "<div style='width:50%;float:left'>";
+print "<h3>Services</h3>";
+print $status;
+print "</div>";
+print "<div style='float:right;width:50%'>";
+print "<h3>Sites</h3>";
+open (my $fh, "<", "URLs");
+my $line = <$fh>;
+my @line_array = split(/\s+/, $line);
+my $ua = LWP::UserAgent->new;
+$ua->timeout(15);
+for my $webhost (@line_array){
+  chop($webhost);
+  my $start = gettimeofday ;
+  my $response = $ua->get("$webhost");
+  my $stop = gettimeofday ;
+  if ($response->is_success) {
+    print "$webhost  <b style='color:green'>responds</b> in ";
+    printf ("%1.3f",($stop - $start));
+    print "s<br />\n"; }
+  else { print "$webhost is <b style='color:red'>not responding</b>.<br />\n"; }
+}
+print "</div>";
+print end_html;
+exit;
+</textarea>
+<b>problems.cgi</b><br />
+<textarea rows='75' cols='80'>
+#!/usr/bin/perl
+use strict;
+use warnings;
+use IO::Socket;
+use CGI qw/:standard/;
+use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
+use CGI::Pretty;
+use LWP::UserAgent;
+print header;
+print start_html(-title=>"MPMon", -style => {-src => '/css/main.css'}, -meta => {
+ 'keywords' => 'perl, massively, parallel, monitor',
+ 'description' => 'Matt\'s Perl Monitor'});
+print "<div class='header'>";
+print "<a class='mpmon' href='http://www.mpmon.com'><span style='color:red'>M</span><span style='color:green'>P</span><span style='color:blue'>M</span>on Problems</a>";
+print "</div>";
+my $serprobs=0;
+my $urlprobs=0;
+my ($socket, $status);
+open (my $fh, "<", "SERVICEs");
+while (my $line = <$fh>){
+  my @list=split(', ',$line);
+  $socket =
+    IO::Socket::INET->new( PeerAddr	=> $list[1],
+    PeerPort	=> $list[2],
+    Proto	=> 'tcp',
+    Type	=>  SOCK_STREAM);
+  if ($socket){
+    close ($socket);
+  }else{
+    $status .= $list[0]." port ".$list[2]." is ".= "<b class='badstat'>CLOSED</b><br />";
+    $serprobs=1;
+  }
+}
+print "<div class='fleft'>";
+print   "<div class='tab1'>";
+print   "<a href='problems.cgi'>Problems</a>";
+print   "</div>";
+print   "<div class='tab2'>";
+print   "<a href='index.cgi'>Overview</a>";
+print   "</div>";
+print   "<div class='tab3'>";
+print   "<a href='code.html'>Code</a>";
+print   "</div>";
+print "</div>";
+print "<div class='left'>";
+print   "<h2 style='text-align:center'>West Coast US</h2>";
+print   "<div style='width:48%;float:left'>";
+print     "<h3>Services</h3>";
+($serprobs==1)?(print $status):(print "No Problems");
+print   "</div>";
+print   "<div style='width:48%;float:right'>";
+print     "<h3>Sites</h3>";
+open (my $fh, "<", "URLs");
+my $line = <$fh>;
+my @line_array = split(/\s+/, $line);
+my $ua = LWP::UserAgent->new;
+$ua->timeout(5);
+for my $webhost (@line_array){
+  chop($webhost);
+  my $response = $ua->get("$webhost");
+  if ($response->is_success) { }
+  else { print "URL $webhost is <b class='badstat'>not responding</b>.<p />\n"; }
+}
+($urlprobs==1)?():(print "No Problems");
+print   "</div>";
+print "</div>";
+print "<div class='right'>";
+print "<iframe src='http://www.mairs.net/mpmon/problems.cgi' frameborder='0' width='100%' height='100%'/>";
+print "</div>";
+print "<div class='v'>";
+print "<a href='http://validator.w3.org/check?uri=referer'><img src='http://www.w3.org/Icons/valid-xhtml10' alt='Valid XHTML 1.0 Transitional' height='31' width='88' /></a>";
+print "</div>";
+print end_html;
+exit;
+</textarea>
+</div>
+</body></html>
