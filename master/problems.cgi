@@ -7,7 +7,7 @@ use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use CGI::Pretty;
 use LWP::UserAgent;
 print header;
-print start_html(-title=>"MPMon", -style => {-src => '/css/main.css'}, -meta => {
+print start_html(-title=>"MPMon", -style => {-src => 'css/main.css'}, -meta => {
  'keywords' => 'perl, massively, parallel, monitor',
  'description' => 'Matt\'s Perl Monitor'});
 print "<div class='header'>";
@@ -44,21 +44,20 @@ print   "<a href='code.html'>Code</a>";
 print   "</div>";
 print "</div>";
 print "<div class='left'>";
-print   "<h2 style='text-align:center'>West Coast US</h2>";
+print   "<h2 style='text-align:center'>New York</h2>";
 print   "<div class='ileft'>";
 print     "<h3>Services</h3>";
 ($serprobs==1)?(print $status):(print "No Problems");
 print   "</div>";
-print   "<div class='right'>";
+print   "<div class='iright'>";
 print     "<h3>Sites</h3>";
 open (my $fh, "<", "URLs");
 my $line = <$fh>;
-my @line_array = split(/\s+/, $line);
+my @line_array = split(',', $line);
 my $ua = LWP::UserAgent->new;
 $ua->timeout(5);
 for my $webhost (@line_array){
-  chop($webhost);
-  my $response = $ua->get("$webhost");
+  my $response = $ua->get("http://$webhost");
   if ($response->is_success) {
   } else {
     print "URL $webhost is <b class='badstat'>not responding</b>.<p />\n";
@@ -68,8 +67,11 @@ for my $webhost (@line_array){
 ($urlprobs==1)?():(print "No Problems");
 print   "</div>"; #iright
 print "</div>"; #oleft
+print "<div class='middle'>";
+print   "<iframe src='http://z0mb135.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'></iframe>";
+print "</div>";
 print "<div class='right'>";
-print "<iframe src='http://mpmon.mairs.net/problems.cgi' frameborder='0' width='100%' height='1000px'>";
+print   "<iframe src='http://mpmon.mairs.net/problems.cgi' frameborder='0' width='100%' height='1000px'>";
 print "</iframe>";
 print "</div>";
 print "<div class='v'>";
