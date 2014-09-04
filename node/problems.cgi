@@ -7,7 +7,7 @@ use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use CGI::Pretty;
 use LWP::UserAgent;
 print header;
-print start_html(-style => {-src => '/css/main.css'});
+print start_html(-style => {-src => 'css/main.css'});
 my $serprobs=0;
 my $urlprobs=0;
 my ($socket, $status);
@@ -27,7 +27,7 @@ while (my $line = <$fh>){
     $serprobs=1;
   }
 }
-print "<h2 style='text-align:center'>East Coast US</h2>";
+print "<h2 style='text-align:center'>Los Angeles</h2>";
 print "<div class='left'>";
 print "  <h3>Services</h3>";
 ($serprobs==1)?(print $status):(print "No Problems");
@@ -36,12 +36,11 @@ print "<div class='right'>";
 print "  <h3>Sites</h3>";
 open (my $fh, "<", "URLs");
 my $line = <$fh>;
-my @line_array = split(/\s+/, $line);
+my @line_array = split(',', $line);
 my $ua = LWP::UserAgent->new;
 $ua->timeout(5);
 for my $webhost (@line_array){
-  chop($webhost);
-  my $response = $ua->get("$webhost");
+  my $response = $ua->get("http://$webhost");
   if ($response->is_success) { }
   else {
     print "URL $webhost is <b class='badstat'>not responding</b>.<p />\n";
