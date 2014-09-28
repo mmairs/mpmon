@@ -5,6 +5,7 @@ use IO::Socket;
 use CGI qw/:standard/;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 use CGI::Pretty;
+use Data::Dumper;
 use LWP::UserAgent;
 use Time::HiRes qw(gettimeofday);
 print header;
@@ -15,7 +16,7 @@ while (my $line = <$fh>){
   my @list=split(', ',$line);
   $socket =
     IO::Socket::INET->new( PeerAddr	=> $list[0],
-    PeerPort	=> $list[2],
+    PeerPort	=> $list[1],
     Proto	=> 'tcp',
     Type	=>  SOCK_STREAM);
   if ($socket){
