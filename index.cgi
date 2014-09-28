@@ -22,7 +22,7 @@ print   "<div class='tab2'>";
 print   "<a href='problems.cgi'>Problems</a>";
 print   "</div>";
 print   "<div class='tab3'>";
-print   "<a href='code.html'>Code</a>";
+print   "<a href='https://github.com/mmairs/mpmon'>Code</a>";
 print   "</div>";
 print "</div>";
 print "<div class='left'>";
