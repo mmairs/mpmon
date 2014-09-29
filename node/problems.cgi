@@ -37,6 +37,7 @@ print "</div>";
 print "<div class='right'>";
 print "  <h3>Sites</h3>";
 open (my $fh, "<", "URLs");
+my $urlprobs=0;
 while (my $line = <$fh>) {
   my @list = split(',', $line);
   my $ua = LWP::UserAgent->new;
@@ -51,13 +52,11 @@ while (my $line = <$fh>) {
     my $match = index(Dumper($response), $list[1]);
     if ($response->is_success) {
       if ($match>-1) {
-        print "$gwebhost:";
-        printf ("<span class='goodstat'>%1.1fs</span>",($stop - $start));
-        print "<br />\n";
-      } else { print "$bwebhost <b class='badstat'>!~$list[1]</b><br />\n"; }
-    } else { print "$bwebhost is <b class='badstat'>&or;</b>!<br />\n"; };
+      } else { print "$bwebhost <b class='badstat'>!~$list[1]</b><br />\n";
+               $urlprobs=1; }
+    } else { print "$bwebhost is <b class='badstat'>&or;</b>!<br />\n";
+             $urlprobs=1; }
   }
-}
+} ($urlprobs==1)?():(print "No Problems"); 
 print "</div>";
 print end_html;
-
