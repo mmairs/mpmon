@@ -27,19 +27,20 @@ while (my $line = <$fh>){
   }
   $status .= "<br />\n";
 }
-print "<h2 style='text-align:center'>Los Angeles</h2>";
+print "<h2 style='text-align:center'>New York</h2>";
 print "<div style='width:50%;float:left'>";
 print   "<h3>Services</h3>";
 print $status;
 print "</div>";
 print "<div style='width:50%;float:right'>";
 print   "<h3>Sites</h3>";
-open (my $fh, "<", "URLs");
+close ($fh);
+open ($fh, "<", "URLs");
 while (my $line = <$fh>) {
   my @list = split(',', $line);
   my $ua = LWP::UserAgent->new;
   $ua->timeout(5);
-  for my $webhost (@list[0]){
+  for my $webhost ($list[0]){
     my $start = gettimeofday ;
     my $response = $ua->get("http://$webhost");
     my $stop = gettimeofday;
