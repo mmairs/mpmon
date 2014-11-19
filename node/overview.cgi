@@ -23,11 +23,11 @@ while (my $line = <$fh>){
     $status .= "<span class='goodstat'>".$list[0].":".$list[1]."</span>";
     close ($socket);
   }else{
-    $status .= $list[0].":".$list[2].":".=  "<b style='color:red'>&or;</b>";
+    $status .= $list[0].":".$list[2]."<b style='color:red'>&darr;</b>";
   }
   $status .= "<br />\n";
 }
-print "<h2 style='text-align:center'>New York</h2>";
+print "<h2 style='text-align:center'>Los Angeles</h2>";
 print "<div style='width:50%;float:left'>";
 print   "<h3>Services</h3>";
 print $status;
@@ -54,7 +54,7 @@ while (my $line = <$fh>) {
         printf ("<span class='goodstat'>%1.1fs</span>",($stop - $start));
         print "<br />\n"; 
       } else { print "$bwebhost <b class='badstat'>!~$list[1]</b><br />\n"; }
-    } else { print "$bwebhost is <b class='badstat'>&or;</b>!<br />\n"; }; 
+    } else { print "$bwebhost is <b class='badstat'>&darr;</b>!<br />\n"; }; 
   } 
 }
 print "</div>";
