@@ -23,11 +23,11 @@ while (my $line = <$fh>){
     $status .= "<span class='goodstat'>".$list[0].":".$list[1]."</span>";
     close ($socket);
   }else{
-    $status .= $list[0].":".$list[2]."<b style='color:red'>&darr;</b>";
+    $status .= "<span class='badstat'>".$list[0].":".$list[1]."</span>";
   }
   $status .= "<br />\n";
 }
-print "<h2 style='text-align:center'>Los Angeles</h2>";
+print "<h2 style='text-align:center'>New York</h2>";
 print "<div style='width:50%;float:left'>";
 print   "<h3>Services</h3>";
 print $status;

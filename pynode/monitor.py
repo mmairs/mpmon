@@ -1,7 +1,12 @@
 #!/usr/bin/python
-import socket;
+import socket
+import cgi
 print "Content-type: text/html\n\n"
-print "<html><head><title>MPythonMon</title></head><body>"
+print """
+<html><head>
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<title>MPythonMon</title></head><body>
+"""
 with open ("SVCs") as f:
   c=f.readlines()
   for t in c:
@@ -9,12 +14,11 @@ with open ("SVCs") as f:
     s=t.partition(',')
     h=s[0]
     p=int(s[2])
-    print h,p
     result = sock.connect_ex((h,p))
     if result == 0:
-      print " is open<br>"
+      print "<span class='goodstat'> {} {}</span><br>".format(h,p)
     else:
-      print " is not open<br>"
+      print "<span class='badstat'> {} {}</span><br>".format(h,p)
     sock.close()
 f.close()
 print "</body></html>"
