@@ -19,7 +19,7 @@ print   "<div class='tab1'>";
 print   "<a href='index.cgi'>Overview</a>";
 print   "</div>";
 print   "<div class='tab2'>";
-print   "<a href='problems.cgi'>Problems</a>";
+print   "<a href='probindex.cgi'>Problems</a>";
 print   "</div>";
 print   "<div class='tab3'>";
 print   "<a href='https://github.com/mmairs/mpmon'>Code</a>";
