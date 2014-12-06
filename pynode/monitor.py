@@ -2,6 +2,7 @@
 import socket
 import requests
 import cgi
+import timeit
 
 print "Content-type: text/html\n\n"
 print """
@@ -39,18 +40,19 @@ def S():
 def U():
   print """
 <div style='width:50%;float:right'>
-<h3>Services</h3>
+<h3>Sites</h3>
 """
   c=rdr ("URLs")
-  for t in c:
-    s=t.partition(',')
-    u='http://'+s[0]+'/'
+  for l in c:
+    s=l.partition(',')
+    u='http://'+s[0]
     m=s[2]
     r = requests.get(u)
     r.encoding = 'utf-8'
+    t = r.elapsed.total_seconds()
     if r.status_code == 200:
       if r.text.find(m):
-        print  "<span class='goodstat'> {}</span><br>".format(u)
+        print("<span class='goodstat'> {0}:{1:1.1f}s</span><br>".format(s[0],t))
       else:
         print "<span class='misstat'> {}!~{}</span><br>".format(u,m)
     else:

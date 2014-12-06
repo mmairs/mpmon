@@ -71,7 +71,7 @@ print "<div class='middle'>";
 print   "<iframe src='http://z0mb135.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'></iframe>";
 print "</div>";
 print "<div class='right'>";
-print   "<iframe src='http://mpmon.mairs.net/problems.cgi' frameborder='0' width='100%' height='1000px'>";
+print   "<iframe src='http://mpmon.mairs.net/node/problems.cgi' frameborder='0' width='100%' height='1000px'>";
 print "</iframe>";
 print "</div>";
 print "<div class='v'>";
