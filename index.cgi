@@ -26,7 +26,7 @@ print   "<a href='https://github.com/mmairs/mpmon'>Code</a>";
 print   "</div>";
 print "</div>";
 print "<div class='left'>";
-print   "<iframe src='http://www.mpmon.com/node/overview.cgi' frameborder='0' width='100%' height='450px'></iframe>";
+print   "<iframe src='http://www.mpmon.com/pynode/monitor.py' frameborder='0' width='100%' height='450px'></iframe>";
 print "</div>";
 print "<div class='middle'>";
 print   "<iframe src='http://www.minusorpl.us/node/overview.cgi' frameborder='0' width='100%' height='450px'></iframe>";

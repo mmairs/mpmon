@@ -1,14 +1,28 @@
 #!/usr/bin/python
 import socket
+import requests
 import cgi
+
 print "Content-type: text/html\n\n"
 print """
 <html><head>
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 <title>MPythonMon</title></head><body>
+<h2 style='text-align:center'>New York</h2>
 """
-with open ("SVCs") as f:
-  c=f.readlines()
+
+def rdr(fn):
+  with open (fn) as f:
+    c=f.readlines()
+    return c
+  f.close
+
+def S():
+  print """
+<div style='width:50%;float:left'>
+<h3>Services</h3>
+"""
+  c=rdr ("SVCs")
   for t in c:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s=t.partition(',')
@@ -20,5 +34,32 @@ with open ("SVCs") as f:
     else:
       print "<span class='badstat'> {} {}</span><br>".format(h,p)
     sock.close()
-f.close()
+  print "</div>"
+
+def U():
+  print """
+<div style='width:50%;float:right'>
+<h3>Services</h3>
+"""
+  c=rdr ("URLs")
+  for t in c:
+    s=t.partition(',')
+    u='http://'+s[0]+'/'
+    m=s[2]
+    r = requests.get(u)
+    r.encoding = 'utf-8'
+    if r.status_code == 200:
+      if r.text.find(m):
+        print  "<span class='goodstat'> {}</span><br>".format(u)
+      else:
+        print "<span class='misstat'> {}!~{}</span><br>".format(u,m)
+    else:
+      print "<span class='badstat'> {} {}</span><br>".format(u,r.status_code)
+  print "</div>"
+
+def main():
+  S()
+  U()
+
+main()
 print "</body></html>"
