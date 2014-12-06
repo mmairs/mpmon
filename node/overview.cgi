@@ -46,6 +46,7 @@ while (my $line = <$fh>) {
     my $stop = gettimeofday;
     my $gwebhost="<a href='http://$webhost' class='goodstat'>$webhost</a>";
     my $bwebhost="<a href='http://$webhost' class='badstat'>$webhost</a>";
+    my $mwebhost="<a href='http://$webhost' class='misstat'>$webhost</a>";
     chomp ($list[1]);
     my $match = index(Dumper($response), $list[1]);
     if ($response->is_success) {
@@ -53,7 +54,7 @@ while (my $line = <$fh>) {
         print "$gwebhost:";
         printf ("<span class='goodstat'>%1.1fs</span>",($stop - $start));
         print "<br />\n"; 
-      } else { print "$bwebhost <b class='badstat'>!~$list[1]</b><br />\n"; }
+      } else { print "$mwebhost <b class='misstat'>!~$list[1]</b><br />\n"; }
     } else { print "$bwebhost is <b class='badstat'>&darr;</b>!<br />\n"; }; 
   } 
 }

@@ -41,6 +41,9 @@ position:fixed;right:0px;bottom:0px;z-index:100;
 .goodstat {
 color: green
 }
+.misstat {
+color:blue
+}
 .badstat {
 color:red
 }
