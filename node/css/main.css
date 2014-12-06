@@ -31,6 +31,9 @@ color: green
 .badstat {
 color:red
 }
+.misstat {
+color:blue
+}
 a {
 text-decoration: none; color:black;
 }

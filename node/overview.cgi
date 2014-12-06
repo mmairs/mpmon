@@ -54,7 +54,7 @@ while (my $line = <$fh>) {
         print "$gwebhost:";
         printf ("<span class='goodstat'>%1.1fs</span>",($stop - $start));
         print "<br />\n"; 
-      } else { print "$mwebhost <b class='misstat'>!~$list[1]</b><br />\n"; }
+      } else { print "$mwebhost <span class='misstat'>!~$list[1]</span><br />\n"; }
     } else { print "$bwebhost is <b class='badstat'>&darr;</b>!<br />\n"; }; 
   } 
 }
