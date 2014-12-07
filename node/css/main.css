@@ -1,11 +1,11 @@
 @charset "utf-8";
 @-webkit-keyframes pulse {
-  from { color: #ff8080; }
-  to { color: #800000; }
+  from { transform: translateZ(0); color: #ff8080; }
+  to { transform: translateZ(0); color: #800000; }
 }
 @keyframes pulse {
-  from { color: #ff8080; }
-  to { color: #800000; }
+  from { transform: translateZ(0); color: #ff8080; }
+  to { transform: translateZ(0); color: #800000; }
 }
 body {font-size:12px;font-family:Helvetica}
 div.fleft {
@@ -36,8 +36,8 @@ position:relative;right:0px;bottom:0px;
 color: green
 }
 .badstat {
--webkit-animation: pulse 3s linear infinite alternate;
-animation: pulse 3s linear infinite alternate;
+-webkit-animation: pulse 5s linear infinite alternate;
+animation: pulse 5s linear infinite alternate;
 }
 .misstat {
 color:blue
