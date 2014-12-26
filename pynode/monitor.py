@@ -3,11 +3,12 @@ import socket
 import requests
 import cgi
 import timeit
+import re
 
 print "Content-type: text/html\n\n"
 print """
 <html><head>
-<link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/node/css/main.css">
 <title>MPythonMon</title></head><body>
 <h2 style='text-align:center'>New York</h2>
 """
@@ -25,16 +26,21 @@ def S():
 """
   c=rdr ("SVCs")
   for t in c:
+    result = -1
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s=t.partition(',')
     h=s[0]
     p=int(s[2])
-    result = sock.connect_ex((h,p))
+    try:
+      result = sock.connect_ex((h,p))
+      sock.close()
+    except:
+      print "<span style='text-decoration:line-through' class='badstat'> {}</span><br>".format(h)
+      continue
     if result == 0:
       print "<span class='goodstat'> {} {}</span><br>".format(h,p)
     else:
       print "<span class='badstat'> {} {}</span><br>".format(h,p)
-    sock.close()
   print "</div>"
 
 def U():
@@ -47,16 +53,24 @@ def U():
     s=l.partition(',')
     u='http://'+s[0]
     m=s[2]
-    r = requests.get(u)
-    r.encoding = 'utf-8'
-    t = r.elapsed.total_seconds()
+    try:
+      r = requests.get(u)
+      r.encoding = 'utf-8'
+      t = r.elapsed.total_seconds()
+    except:
+      print "<span style='text-decoration:line-through' class='badstat'> {}</span><br>".format(u)
+      continue
     if r.status_code == 200:
-      if r.text.find(m):
-        print("<span class='goodstat'> {0}:{1:1.1f}s</span><br>".format(s[0],t))
+      x = r.text
+#      print m in x
+      #if m in r.text:
+      #if r.text.find(m)>0:
+      if re.search(m,x):
+        print "<a class='goodstat' href='{0}'>{1}:{2:1.1f}s</a><br>".format(u,s[0],t)
       else:
-        print "<span class='misstat'> {}!~{}</span><br>".format(u,m)
+        print "<a class='misstat' href={0}>{1}!~{2}</a><br>".format(u,s[0],m)
     else:
-      print "<span class='badstat'> {} {}</span><br>".format(u,r.status_code)
+      print ("<a class='badstat' href={0}> {1} {2}</a><br>".format(u,s[0],r.status_code))
   print "</div>"
 
 def main():
