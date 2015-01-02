@@ -21,7 +21,6 @@ def rdr(fn):
 
 def S():
   print """
-<div style='width:50%;float:left'>
 <h3>Services</h3>
 """
   c=rdr ("SVCs")
@@ -41,11 +40,9 @@ def S():
       print "<span class='goodstat'> {} {}</span><br>".format(h,p)
     else:
       print "<span class='badstat'> {} {}</span><br>".format(h,p)
-  print "</div>"
 
 def U():
   print """
-<div style='width:50%;float:right'>
 <h3>Sites</h3>
 """
   c=rdr ("URLs")
@@ -54,7 +51,7 @@ def U():
     u='http://'+s[0]
     m=s[2]
     try:
-      r = requests.get(u)
+      r = requests.get(u,headers={'User-Agent':'mpmon'})
       r.encoding = 'utf-8'
       t = r.elapsed.total_seconds()
     except:
@@ -71,7 +68,6 @@ def U():
         print "<a class='misstat' href={0}>{1}!~{2}</a><br>".format(u,s[0],m)
     else:
       print ("<a class='badstat' href={0}> {1} {2}</a><br>".format(u,s[0],r.status_code))
-  print "</div>"
 
 def main():
   S()
