@@ -30,10 +30,10 @@ print   "<iframe src='http://www.mpmon.com/pynode/monitor.py' frameborder='0' wi
 print "</div>";
 print "<div class='middle'>";
 print "<div class='ileft'>";
-print   "<iframe src='http://www.minusorpl.us/node/overview.cgi' frameborder='0' width='100%' height='900px'></iframe>";
+print   "<iframe src='http://www.z0mb135.com/mpmon/node/overview.cgi' frameborder='0' width='100%' height='900px'></iframe>";
 print "</div>";
 print "<div class='iright'>";
-print   "<iframe src='http://max.mairs.net/mpmon/pynode/monitor.py' frameborder='0' width='100%' height='900px'></iframe>";
+print   "<iframe src='http://max.mairs.net/cgi-bin/mpmon/node/overview.cgi' frameborder='0' width='100%' height='900px'></iframe>";
 print "</div>";
 print "</div>";
 print "<div class='right'>";
