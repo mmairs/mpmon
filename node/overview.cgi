@@ -28,12 +28,9 @@ while (my $line = <$fh>){
   $status .= "<br />\n";
 }
 print "<h2 style='text-align:center'>New York</h2>";
-print "<div style='width:50%;float:left'>";
-print   "<h3>Services</h3>";
+print "<h3>Services</h3>";
 print $status;
-print "</div>";
-print "<div style='width:50%;float:right'>";
-print   "<h3>Sites</h3>";
+print "<h3>Sites</h3>";
 close ($fh);
 open ($fh, "<", "URLs");
 while (my $line = <$fh>) {
@@ -58,5 +55,4 @@ while (my $line = <$fh>) {
     } else { print "$bwebhost is <b class='badstat'>&darr;</b>!<br />\n"; }; 
   } 
 }
-print "</div>";
 print end_html;
