@@ -14,10 +14,9 @@ print """
 """
 
 def rdr(fn):
-  with open (fn) as f:
-    c=f.readlines()
-    return c
-  f.close
+  r = requests.get('http://www.mpmon.com/node/'+fn,headers={'User-Agent':'mpmon'})
+  c = r.text.split('\n')
+  return c
 
 def S():
   print """
@@ -29,7 +28,10 @@ def S():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s=t.partition(',')
     h=s[0]
-    p=int(s[2])
+    try:
+      p=int(s[2])
+    except:
+      continue
     try:
       result = sock.connect_ex((h,p))
       sock.close()
@@ -65,9 +67,9 @@ def U():
       if re.search(m,x):
         print "<a class='goodstat' href='{0}'>{1}:{2:1.1f}s</a><br>".format(u,s[0],t)
       else:
-        print "<a class='misstat' href={0}>{1}!~{2}</a><br>".format(u,s[0],m)
+        print "<a class='misstat' href='{0}'>{1}!~{2}</a><br>".format(u,s[0],m)
     else:
-      print ("<a class='badstat' href={0}> {1} {2}</a><br>".format(u,s[0],r.status_code))
+      print ("<a class='badstat' href='{0}'> {1} {2}</a><br>".format(u,s[0],r.status_code))
 
 def main():
   S()
