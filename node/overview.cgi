@@ -28,7 +28,7 @@ while (my $line = <$fh>){
   $status .= "<br />\n";
 }
 print "<h2 style='text-align:center'>New York</h2>";
-print "<div style='width:50%;float:left'>";-->
+print "<div style='width:50%;float:left'>";
 print   "<h3>Services</h3>";
 print $status;
 print "</div>";
