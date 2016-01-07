@@ -20,19 +20,28 @@ width: 54px; float: left; -webkit-transform: rotate(270deg);-moz-transform: rota
 div.tab3 {
 width:54px; float: left; -webkit-transform: rotate(270deg);-moz-transform: rotate(270deg);-ie-transform: rotate(270deg);-o-transform: rotate(270deg); display:inline-block; border-style: solid; border-width: 1px 1px 1px 1px; border-radius:10px 0px 0px 0px; padding: 3px; box-shadow: -3px -3px 1px #000; position: absolute; top:126px; left:-3px;
 }
-div.left {
+div.qleft {
 width:25%; height:1000px; position:absolute;left:23px;top:65px;margin-right:0;border-style:solid;border-width:0px 0px 0px 1px;padding: 0px ; margin:0px
+}
+div.left {
+width:33%; height:1000px; position:absolute;left:23px;top:65px;margin-right:0;border-style:solid;border-width:0px 0px 0px 1px;padding: 0px ; margin:0px
 }
 div.ileft {
 width:50%; height:1000px;float: left
 }
-div.middle {
+div.hmiddle {
 width:50%; height:1000px;margin-right:auto;margin-left:auto;padding: 0px;margin-top:24px
+}
+div.middle {
+width:33%; height:1000px;margin-right:auto;margin-left:auto;padding: 0px;margin-top:24px
 }
 div.iright {
 width:50%; height:1000px; float:right;
 }
 div.right {
+width:33%; float:right; height:900px; position:absolute;right:12px;top:65px
+}
+div.qright {
 width:25%; float:right; height:900px; position:absolute;right:12px;top:65px
 }
 width:45%div.v {

@@ -68,7 +68,7 @@ print "<div class='ileft'>";
 print   "<iframe src='http://z0mb135.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'></iframe>";
 print "</div>";
 print "<div class='iright'>";
-print   "<iframe src='http://max.mairs.net/cgi-bin/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'>";
+print   "<iframe src='http://max.mairs.net/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'>";
 print "</iframe>";
 print "</div>";
 print "</div>";
