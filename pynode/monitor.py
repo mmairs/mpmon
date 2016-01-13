@@ -49,6 +49,8 @@ def U():
 """
   c=rdr ("URLs")
   for l in c:
+    if len(l) == 0:
+      break
     s=l.partition(',')
     u='http://'+s[0]
     m=s[2]
