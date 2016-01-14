@@ -43,7 +43,7 @@ print   "<div class='tab3'>";
 print   "<a href='https://github.com/mmairs/mpmon'>Code</a>";
 print   "</div>";
 print "</div>";
-print "<div class='left'>";
+print "<div class='qleft'>";
 print   "<h2 style='text-align:center'>New York</h2>";
 print     "<h3>Services</h3>";
 ($serprobs==1)?(print $status):(print "No Problems");
@@ -63,7 +63,7 @@ for my $webhost (@line_array){
 }
 ($urlprobs==1)?():(print "No Problems");
 print "</div>"; #oleft
-print "<div class='middle'>";
+print "<div class='hmiddle'>";
 print "<div class='ileft'>";
 print   "<iframe src='http://z0mb135.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'></iframe>";
 print "</div>";
@@ -72,8 +72,8 @@ print   "<iframe src='http://max.mairs.net/mpmon/node/problems.cgi' frameborder=
 print "</iframe>";
 print "</div>";
 print "</div>";
-print "<div class='right'>";
-print   "<iframe src='http://no.justicejust.us/p.php' frameborder='0' width='100%' height='1000px'>";
+print "<div class='qright'>";
+print   "<iframe src='http://www.b0f4.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'>";
 print "</iframe>";
 print "</div>";
 print "<div class='v'>";
