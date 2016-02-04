@@ -65,15 +65,16 @@ for my $webhost (@line_array){
 print "</div>"; #oleft
 print "<div class='hmiddle'>";
 print "<div class='ileft'>";
-print   "<iframe src='http://z0mb135.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'></iframe>";
+print "<div id='loadImg1'><div><img src='gspin.gif' /></div></div><iframe src='http://z0mb135.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px' onload=\"document.getElementById('loadImg1').style.display='none';\">";
+print "</iframe>";
 print "</div>";
 print "<div class='iright'>";
-print   "<iframe src='http://max.mairs.net/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'>";
+print "<div id='loadImg2'><div><img src='bspin.gif' /></div></div><iframe src='http://max.mairs.net/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px' onload=\"document.getElementById('loadImg2').style.display='none';\">";
 print "</iframe>";
 print "</div>";
 print "</div>";
 print "<div class='qright'>";
-print   "<iframe src='http://www.b0f4.com/mpmon/node/problems.cgi' frameborder='0' width='100%' height='1000px'>";
+print "<div id='loadImg3'><div><img src='spin.gif' /></div></div><iframe src='http://www.b0f4.com/mpmon/pynode/probs.py' frameborder='0' width='100%' height='1000px' onload=\"document.getElementById('loadImg3').style.display='none';\">";
 print "</iframe>";
 print "</div>";
 print "<div class='v'>";

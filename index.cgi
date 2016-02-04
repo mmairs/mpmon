@@ -26,7 +26,7 @@ print   "<a href='https://github.com/mmairs/mpmon'>Code</a>";
 print   "</div>";
 print "</div>";
 print "<div class='qleft'>";
-print "<div id='loadImg'><div><img src='gspin.gif' /></div></div> <iframe border=0 name=iframe src='http://www.mpmon.com/pynode/monitor.py' width='100%' height='900px' scrolling='no' noresize frameborder='0' onload=\"document.getElementById('loadImg').style.display='none';\"></iframe>";
+print "<div id='loadImg'><div style='text-align:center'><img src='gspin.gif' /></div></div> <iframe border=0 name=iframe src='http://www.mpmon.com/pynode/monitor.py' width='100%' height='900px' scrolling='no' noresize frameborder='0' onload=\"document.getElementById('loadImg').style.display='none';\"></iframe>";
 print "</div>";
 print "<div class='hmiddle'>";
 print "<div class='ileft'>";
