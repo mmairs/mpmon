@@ -57,6 +57,7 @@ def U():
 def SC(l):
     if len(l) == 0:
       return
+    q=''
     s=l.partition(',')
     u='http://'+s[0]
     m=s[2]
@@ -65,15 +66,16 @@ def SC(l):
       r.encoding = 'utf-8'
       t = r.elapsed.total_seconds()
     except:
-      print "<span style='text-decoration:line-through' class='badstat'> {}</span><br>".format(u)
+      q+= "<span style='text-decoration:line-through' class='badstat'> {}</span><br>".format(u)
     if r.status_code == 200:
       x = r.text
       if re.search(m,x):
-        print "<a class='goodstat' href='{0}'>{1}:{2:1.1f}s</a><br>".format(u,s[0],t)
+        q+= "<a class='goodstat' href='{0}'>{1}:{2:1.1f}s</a><br>".format(u,s[0],t)
       else:
-        print "<a class='misstat' href='{0}'>{1}!~{2}</a><br>".format(u,s[0],m)
+        q+= "<a class='misstat' href='{0}'>{1}!~{2}</a><br>".format(u,s[0],m)
     else:
-      print ("<a class='badstat' href='{0}'> {1} {2}</a><br>".format(u,s[0],r.status_code))
+      q+= ("<a class='badstat' href='{0}'> {1} {2}</a><br>".format(u,s[0],r.status_code))
+    return q
 
 def main():
   S()
