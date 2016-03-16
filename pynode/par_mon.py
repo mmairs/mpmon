@@ -50,7 +50,9 @@ def U():
 <h3>Sites</h3>
 """
   c=rdr ("URLs")
-  Parallel (n_jobs=8)(delayed(SC)(l)for l in c)
+  ar=Parallel (n_jobs=1)(delayed(SC)(l)for l in c)
+  sar=sorted(arr)
+  print sar
 
 def SC(l):
     if len(l) == 0:
