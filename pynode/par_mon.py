@@ -52,7 +52,8 @@ def U():
   c=rdr ("URLs")
   ar=Parallel (n_jobs=1)(delayed(SC)(l)for l in c)
   sar=sorted(ar)
-  print sar
+  for uri in sar:
+    print uri
 
 def SC(l):
     if len(l) == 0:
