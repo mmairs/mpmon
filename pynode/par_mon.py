@@ -53,6 +53,8 @@ def U():
   ar=Parallel (n_jobs=1)(delayed(SC)(l)for l in c)
   sar=sorted(ar)
   for uri in sar:
+      if uri==None:
+    continue
     print uri
 
 def SC(l):
