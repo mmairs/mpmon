@@ -8,7 +8,7 @@ import re
 print "Content-type: text/html\n\n"
 print """
 <html><head>
-<link rel="stylesheet" type="text/css" href="/node/css/main.css">
+<link rel="stylesheet" type="text/css" href="http://www.z0mb135.com/mpmon/css/main.css" />
 <title>MPythonMon</title></head><body>
 <h2 style='text-align:center'>New York</h2>
 """
