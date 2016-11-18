@@ -60,6 +60,7 @@ def U():
 def SC(l):
     if len(l) == 0:
       return
+    global r
     q=''
     s=l.partition(',')
     u='http://'+s[0]
