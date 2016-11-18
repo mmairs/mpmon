@@ -38,7 +38,7 @@ def S():
       result = sock.connect_ex((h,p))
       sock.close()
     except:
-      print "<span style='text-decoration:line-through' class='badstat'> {}</span><br>".format(h)
+      print "<span class='badstat'> {}</span><br>".format(h)
       continue
     if result == 0:
       print "<span class='goodstat'> {} {}</span><br>".format(h,p)
@@ -69,7 +69,8 @@ def SC(l):
       r.encoding = 'utf-8'
       t = r.elapsed.total_seconds()
     except:
-      q+= "<span style='text-decoration:line-through' class='badstat'> {}</span><br>".format(u)
+      q+= "<a class='badstat' href='{0}'>{0}</a><br>".format(u)
+      return q
     if r.status_code == 200:
       x = r.text
       if re.search(m,x):
