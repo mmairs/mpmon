@@ -50,7 +50,7 @@ def U():
 <h3>Sites</h3>
 """
   c=rdr ("URLs")
-  ar=Parallel (n_jobs=1)(delayed(SC)(l)for l in c)
+  ar=Parallel (n_jobs=8)(delayed(SC)(l)for l in c)
   sar=sorted(ar)
   for uri in sar:
     if uri==None:
@@ -64,22 +64,23 @@ def SC(l):
     q=''
     s=l.partition(',')
     u='http://'+s[0]
+    h=s[0]
     m=s[2]
     try:
       r = requests.get(u,headers={'User-Agent':'mpmon'})
       r.encoding = 'utf-8'
       t = r.elapsed.total_seconds()
     except:
-      q+= "<a class='badstat' href='{0}'>{0}</a><br>".format(u)
+      q+= "<a class='badstat' href='{0}'>{0}</a><br>".format(h)
       return q
     if r.status_code == 200:
       x = r.text
       if re.search(m,x):
-        q+= "<a class='goodstat' href='{0}'>{1}:{2:1.1f}s</a><br>".format(u,s[0],t)
+        q+= "<a class='goodstat' href='{0}'>{1}:{2:1.1f}s</a><br>".format(u,h,t)
       else:
-        q+= "<a class='misstat' href='{0}'>{1}!~{2}</a><br>".format(u,s[0],m)
+        q+= "<a class='misstat' href='{0}'>{1}!~{2}</a><br>".format(u,h,m)
     else:
-      q+= ("<a class='badstat' href='{0}'> {1} {2}</a><br>".format(u,s[0],r.status_code))
+      q+= ("<a class='badstat' href='{0}'> {1} {2}</a><br>".format(u,h,r.status_code))
     return q
 
 def main():
